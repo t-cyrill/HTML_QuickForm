@@ -255,7 +255,7 @@ class HTML_QuickForm_group extends HTML_QuickForm_element
      * @access    public
      * @return    array
      */
-    function &getElements()
+    function getElements()
     {
         $this->_createElementsIfNotExist();
         return $this->_elements;

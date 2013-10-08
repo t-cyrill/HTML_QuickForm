@@ -563,7 +563,7 @@ class HTML_QuickForm extends HTML_Common
      * @return    HTML_QuickForm_Element
      * @throws    HTML_QuickForm_Error
      */
-    function &createElement($elementType)
+    function createElement($elementType)
     {
         $args    =  func_get_args();
         $element =& HTML_QuickForm::_loadElement('createElement', $elementType, array_slice($args, 1));
@@ -584,7 +584,7 @@ class HTML_QuickForm extends HTML_Common
      * @return    HTML_QuickForm_Element
      * @throws    HTML_QuickForm_Error
      */
-    function &_loadElement($event, $type, $args)
+    function _loadElement($event, $type, $args)
     {
         $type = strtolower($type);
         if (!HTML_QuickForm::isTypeRegistered($type)) {
@@ -623,7 +623,7 @@ class HTML_QuickForm extends HTML_Common
      * @access   public
      * @throws   HTML_QuickForm_Error
      */
-    function &addElement($element)
+    function addElement($element)
     {
         if (is_object($element) && is_subclass_of($element, 'html_quickform_element')) {
            $elementObject = &$element;
@@ -679,7 +679,7 @@ class HTML_QuickForm extends HTML_Common
     * @return   HTML_QuickForm_element  reference to inserted element
     * @throws   HTML_QuickForm_Error
     */
-    function &insertElementBefore(&$element, $nameAfter)
+    function insertElementBefore(&$element, $nameAfter)
     {
         if (!empty($this->_duplicateIndex[$nameAfter])) {
             $error = PEAR::raiseError(null, QUICKFORM_INVALID_ELEMENT_NAME, null, E_USER_WARNING, 'Several elements named "' . $nameAfter . '" exist in HTML_QuickForm::insertElementBefore().', 'HTML_QuickForm_Error', true);
@@ -746,7 +746,7 @@ class HTML_QuickForm extends HTML_Common
      * @access   public
      * @throws   HTML_QuickForm_Error
      */
-    function &addGroup($elements, $name=null, $groupLabel='', $separator=null, $appendName = true)
+    function addGroup($elements, $name=null, $groupLabel='', $separator=null, $appendName = true)
     {
         static $anonGroups = 1;
 
@@ -770,7 +770,7 @@ class HTML_QuickForm extends HTML_Common
      * @return    HTML_QuickForm_element    reference to element
      * @throws    HTML_QuickForm_Error
      */
-    function &getElement($element)
+    function getElement($element)
     {
         if (isset($this->_elementIndex[$element])) {
             return $this->_elements[$this->_elementIndex[$element]];
@@ -795,7 +795,7 @@ class HTML_QuickForm extends HTML_Common
      * @return    mixed     element value
      * @throws    HTML_QuickForm_Error
      */
-    function &getElementValue($element)
+    function getElementValue($element)
     {
         if (!isset($this->_elementIndex[$element])) {
             $error = PEAR::raiseError(null, QUICKFORM_NONEXIST_ELEMENT, null, E_USER_WARNING, "Element '$element' does not exist in HTML_QuickForm::getElementValue()", 'HTML_QuickForm_Error', true);
@@ -1016,7 +1016,7 @@ class HTML_QuickForm extends HTML_Common
      * @return HTML_QuickForm_element    a reference to the removed element
      * @throws HTML_QuickForm_Error
      */
-    function &removeElement($elementName, $removeRules = true)
+    function removeElement($elementName, $removeRules = true)
     {
         if (!isset($this->_elementIndex[$elementName])) {
             $error = PEAR::raiseError(null, QUICKFORM_NONEXIST_ELEMENT, null, E_USER_WARNING, "Element '$elementName' does not exist in HTML_QuickForm::removeElement()", 'HTML_QuickForm_Error', true);
@@ -1700,7 +1700,7 @@ class HTML_QuickForm extends HTML_Common
     * @since 3.0
     * @return object a default renderer object
     */
-    function &defaultRenderer()
+    function defaultRenderer()
     {
         if (!isset($GLOBALS['_HTML_QuickForm_default_renderer'])) {
             include_once('HTML/QuickForm/Renderer/Default.php');

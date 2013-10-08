@@ -54,7 +54,7 @@ class HTML_QuickForm_RuleRegistry
      * @static
      * @return    HTML_QuickForm_RuleRegistry
      */
-    function &singleton()
+    function singleton()
     {
         static $obj;
         if (!isset($obj)) {
@@ -117,7 +117,7 @@ class HTML_QuickForm_RuleRegistry
      * @access    public
      * @return    HTML_QuickForm_Rule
      */
-    function &getRule($ruleName)
+    function getRule($ruleName)
     {
         list($class, $path) = $GLOBALS['_HTML_QuickForm_registered_rules'][$ruleName];
 
